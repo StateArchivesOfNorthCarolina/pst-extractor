@@ -1,0 +1,4 @@
+*~
+.*.sw*
+*.pyc
+/tomes_pst_extractor/lib/bin
