@@ -41,7 +41,7 @@ class PSTExtractor():
     """
     
 
-    def __init__(self, account_name, pst_file, output_path, charset="UTF-8"): 
+    def __init__(self, account_name, pst_file, output_path, charset="utf-8"): 
         """ Sets instance attributes.
     
         Args:
