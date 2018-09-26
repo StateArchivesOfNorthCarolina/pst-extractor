@@ -89,6 +89,47 @@ class PSTExtractor():
         # create a list of valid logging levels.
         self.valid_log_levels = ["debug", "info", "warning", "error", "critical"]
 
+        # validate instance arguments.
+        self.validate()
+
+
+    def validate(self):
+        """ Validates instance arguments passed to the constructor.
+
+        Returns:
+            None
+
+        Raises:
+            - FileNotFoundError: If @self.pst_file is not a file.
+            - NotADirectoryError: If @self.output_path is not a directory.
+            - IsADirectoryError: If @self.mime_path already exists.
+        """
+
+        self.logger.info("Validating instance arguments.")
+
+        # test if @self.account_name is an identifier.
+        if not self.account_name.isidentifier():
+            msg = "Account name '{}' is not a valid identifier; problems may occur.".format(
+                    self.account_name)
+            self.logger.warning(msg)
+
+        # verify @self.pst_file exists.
+        if not os.path.isfile(self.pst_file):
+            msg = "Can't find PST file: {}".format(self.pst_file)
+            raise FileNotFoundError(msg)
+
+        # verify @self.output_path exists.
+        if not os.path.isdir(self.output_path):
+            msg = "Can't find folder: {}".format(self.output_path)
+            raise NotADirectoryError(msg)
+
+        # make sure @self.mime_path doesn't already exist.
+        if os.path.isdir(self.mime_path):
+            msg = "Can't overwrite existing MIME folder: {}".format(self.mime_path)
+            raise IsADirectoryError(msg)
+
+        return
+
 
     def _log_subprocess_line(self, line):
         """ Using @self.subprocess_logger, this logs a @line of text outputted by 
@@ -169,27 +210,8 @@ class PSTExtractor():
         Returns:
             None
         """
-        
-        # test if @self.account_name is an identifier.
-        if not self.account_name.isidentifier():
-            msg = "Account name '{}' is not a valid identifier; problems may occur.".format(
-                    self.account_name)
-            self.logger.warning(msg)
 
-        # verify @self.pst_file exists.
-        if not os.path.isfile(self.pst_file):
-            msg = "Can't find PST file: {}".format(self.pst_file)
-            raise FileNotFoundError(msg)
-    
-        # verify @self.output_path exists.
-        if not os.path.isdir(self.output_path):
-            msg = "Can't find folder: {}".format(self.output_path)
-            raise NotADirectoryError(msg)
-
-        # make sure @self.mime_path doesn't already exist.
-        if os.path.isdir(self.mime_path):
-            msg = "Can't overwrite existing MIME folder: {}".format(self.mime_path)
-            raise IsADirectoryError(msg)
+        self.logger.info("Extracting '{}' to: {}".format(self.pst_file, self.mime_path))
 
         # extract @self.pst_file.
         try:
