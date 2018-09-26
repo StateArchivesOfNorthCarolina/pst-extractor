@@ -26,7 +26,7 @@ Logging notes:
     - This will allow the Python wrapper ("../pst_extractor.py") to interpret the correct logging
     level.
     - The only exception to this is "INFO: " in that omitting this string from "info"-level output
-    will, by default, consider the output to be at the "info"-level.
+    will imply the output to be at the "info"-level.
 */
 
 using System;
