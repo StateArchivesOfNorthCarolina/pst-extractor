@@ -213,7 +213,7 @@ namespace TOMES_PST_Extractor {
             // are legitimate separators in Windows.
             folderName = folderName.Replace(@"\", "/");
 
-            // replace invalid file name characters with an underscore.
+            // replace invalid path characters with an underscore.
             // based on: https://stackoverflow.com/a/23182807
             //folderName = string.Join("_", folderName.Split(Path.GetInvalidPathChars()));
             
