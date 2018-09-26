@@ -209,13 +209,13 @@ namespace TOMES_PST_Extractor {
             */
 
             // explicitly replace backslashes with forward slashes.
-            // note: backslashes create odd folder name characters in Linux; also forward slashes
+            // Note: backslashes create odd folder name characters in Linux; also forward slashes
             // are legitimate separators in Windows.
             folderName = folderName.Replace(@"\", "/");
 
             // replace invalid path characters with an underscore.
             // based on: https://stackoverflow.com/a/23182807
-            //folderName = string.Join("_", folderName.Split(Path.GetInvalidPathChars()));
+            folderName = string.Join("_", folderName.Split(Path.GetInvalidPathChars()));
             
             return folderName;
         }
