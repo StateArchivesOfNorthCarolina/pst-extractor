@@ -28,7 +28,7 @@ If you want to install TOMES PST Extractor as a Python package, do: `pip3 instal
 
 Running `pip3 uninstall tomes_pst_extractor` will uninstall the TOMES PST Extractor package.
 
-# Compiling the .EXE file
+# Making the .exe file
 If you need to edit the source C# code for `./tomes_pst_extractor/lib/pst_to_mime.cs` and recompile it as `./tomes_pst_extractor/lib/pst_to_mime.exe`, you will need a valid [MailBee License Key](https://afterlogic.com/mailbee-net/docs/keys.html).
 
 The current version of the `./tomes_pst_extractor/lib/pst_to_mime.exe` was compiled on Linux with the **Mono C# Compiler** using the following steps:

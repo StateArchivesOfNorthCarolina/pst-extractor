@@ -82,13 +82,17 @@ class PSTExtractor():
             msg = "Can't find .exe file: {}".format(self.extractor_app)
             raise FileNotFoundError(msg)
 
+        # set logger for output from @self.extractor.
+        self.subprocess_logger = logging.getLogger(self.extractor_app)
+        self.subprocess_logger.addHandler(logging.NullHandler())
+
         # create a list of valid logging levels.
         self.valid_log_levels = ["debug", "info", "warning", "error", "critical"]
 
 
-    def _log_parsed_line(self, line):
-        """ Logs a @line of text outputted by @self.extractor_app with the appropriate logging
-        level.
+    def _log_subprocess_line(self, line):
+        """ Using @self.subprocess_logger, this logs a @line of text outputted by 
+        @self.extractor_app with the appropriate logging level.
         
         Args:
             line (str): The text outputted by @self.extractor_app.
@@ -108,15 +112,11 @@ class PSTExtractor():
         if level not in self.valid_log_levels:
             level, message = "info", line.strip()
 
-        # alter @message in order to distinguish between logs from this Python script VS.
-        # those from @self.extractor_app.
-        message = "[{}] {}".format(self.extractor_app, message)
-
         # log @message.
         try:
-            getattr(self.logger, level)(message)
+            getattr(self.subprocess_logger, level)(message)
         except Exception as err:
-            self.logger.warning("Can't log message: {}".format(message))
+            self.logger.warning("Can't log subprocess message: {}".format(message))
             self.logger.error(err)
 
         return
@@ -158,7 +158,7 @@ class PSTExtractor():
                 else:
                     line = "".join(line_parts)
                     line_parts[:] = []
-                    self._log_parsed_line(line)
+                    self._log_subprocess_line(line)
         
         return
  
