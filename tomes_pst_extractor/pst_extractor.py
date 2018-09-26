@@ -188,7 +188,7 @@ class PSTExtractor():
 
         # make sure @self.mime_path doesn't already exist.
         if os.path.isdir(self.mime_path):
-            msg = "Won't overwrite existing MIME folder: {}".format(self.mime_path)
+            msg = "Can't overwrite existing MIME folder: {}".format(self.mime_path)
             raise IsADirectoryError(msg)
 
         # extract @self.pst_file.
