@@ -47,6 +47,9 @@ namespace TOMES_PST_Extractor {
                 - accountName: An identifier for the email account.
                 - pstFile: The PST file to convert.
                 - outputPath: The directory in which to place the MIME data.
+
+            Example:
+                `[mono] pst_to_mime.exe sample ../../tests/sample_files/sample.pst ../../tests/sample_files`
             */
 
             // !!! DO NOT DISTRIBUTE SOURCE CODE WITH THIS VALUE FILLED OUT. !!!

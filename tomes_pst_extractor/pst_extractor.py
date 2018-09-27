@@ -87,13 +87,10 @@ class PSTExtractor():
         self.subprocess_logger.addHandler(logging.NullHandler())
 
         # create a list of valid logging levels.
-        self.valid_log_levels = ["debug", "info", "warning", "error", "critical"]
-
-        # validate instance arguments.
-        self.validate()
+        self._valid_log_levels = ["debug", "info", "warning", "error", "critical"]
 
 
-    def validate(self):
+    def _validate_args(self):
         """ Validates instance arguments passed to the constructor.
 
         Returns:
@@ -150,7 +147,7 @@ class PSTExtractor():
             level, message = None, line.strip()
 
         # assume "info" level if @level is not a valid level.
-        if level not in self.valid_log_levels:
+        if level not in self._valid_log_levels:
             level, message = "info", line.strip()
 
         # log @message.
@@ -212,6 +209,9 @@ class PSTExtractor():
         """
 
         self.logger.info("Extracting '{}' to: {}".format(self.pst_file, self.mime_path))
+
+        # validate instance arguments.
+        self._validate_args()
 
         # extract @self.pst_file.
         try:
