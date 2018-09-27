@@ -9,7 +9,7 @@ to extract EML files a source PST file.
 Note: This code requires a MailBee license key (look for "string licenseKey =", below).
 
 *** WARNING!! *** You MUST NOT distribute source code with a valid license key value. But you can
-distribute a compiled executable per the MailBee documentation 
+distribute a compiled executable per the MailBee documentation from September 2018
 (https://afterlogic.com/mailbee-net/docs/keys.html):
     "If you redistribute the application to third-parties without the source code, embedding the
     key in the code may be the preferred method of hiding the license key from end users."
