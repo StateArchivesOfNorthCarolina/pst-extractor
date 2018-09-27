@@ -35,10 +35,10 @@ The current version of the `./tomes_pst_extractor/lib/pst_to_mime.exe` was compi
 
 1. `cd tomes_pst_extractor/lib`
 2. `mkdir bin`
-	1. This makes a temporary directory in which to compile a **copy** the source code. Using a copy helps prevent leaving your MailBee License Key in  the source code.
+	1. This makes a temporary directory in which to compile a **copy** of the source code. Using a copy helps prevent leaving your MailBee License Key in  the source code.
 3. `cp pst_to_mime.cs bin/pst_to_mime.cs`
 4. `vi bin/pst_to_mime.cs`
-	1. After opening the file, insert a valid license key (see the source code for more information) and save the file.
+	1. After opening the copy, insert a valid license key (see the source code for more information) and save the file.
 5. `mcs /reference:MailBee.NET.dll bin/pst_to_mime.cs`
 6. `mv bin/pst_to_mime.exe .`
 7. `rm -r bin`
