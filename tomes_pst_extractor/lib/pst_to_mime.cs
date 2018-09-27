@@ -21,6 +21,7 @@ Features:
     - Legalizes output folder/file path names.
 
 Logging notes:
+
     - All output should start with one of the following strings: "DEBUG: ", "INFO: ", "WARNING: ", 
     "ERROR: " , or "CRITICAL: ".
     - This will allow the Python wrapper ("../pst_extractor.py") to interpret the correct logging
