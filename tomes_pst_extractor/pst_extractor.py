@@ -4,10 +4,7 @@
 ./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
 
 Todo:
-    - Complete .md files in docs.
     - Add unit tests.
-    - Verify/validate sample data output.
-    - Find a safe sample PST.
     - Test with PSTs that have an "@" in the filename.
 """
 
