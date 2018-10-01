@@ -202,7 +202,7 @@ namespace TOMES_PST_Extractor {
         }
     
         private static string NormalizeFolderName(string folderName) {
-            /* Replaces invalid path characters with an underscore and replaces back slashes with
+            /* Replaces invalid path characters with an underscore and replaces backslashes with
             forward slashes.
             
             Args:
