@@ -81,7 +81,7 @@ class PSTExtractor():
             raise FileNotFoundError(msg)
         
         # determine whether or not to run @self.extractor_app with Mono.
-        self.use_mono = platform.system() == "Windows"
+        self.use_mono = platform.system() != "Windows"
 
         # set logger for output from @self.extractor.
         self.subprocess_logger = logging.getLogger(self.extractor_app)
