@@ -91,8 +91,6 @@ class PSTExtractor():
         self._valid_log_levels = ["debug", "info", "warning", "error", "critical"]
 
 
-
-
     def _validate_args(self):
         """ Validates instance arguments passed to the constructor.
 
