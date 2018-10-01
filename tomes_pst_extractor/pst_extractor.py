@@ -79,6 +79,9 @@ class PSTExtractor():
         if not os.path.isfile(self.extractor_path):
             msg = "Can't find .exe file: {}".format(self.extractor_app)
             raise FileNotFoundError(msg)
+        
+        # determine whether or not to run @self.extractor_app with Mono.
+        self.use_mono = platform.system() == "Windows"
 
         # set logger for output from @self.extractor.
         self.subprocess_logger = logging.getLogger(self.extractor_app)
@@ -86,6 +89,8 @@ class PSTExtractor():
 
         # create a list of valid logging levels.
         self._valid_log_levels = ["debug", "info", "warning", "error", "critical"]
+
+
 
 
     def _validate_args(self):
@@ -168,7 +173,7 @@ class PSTExtractor():
         
         # create the command to run.
         cli_args = [self.extractor_path, self.account_name, self.pst_file, self.output_path]
-        if platform.system() != "Windows":
+        if self.use_mono:
             cli_args.insert(0, "mono")
         self.logger.debug("Running command: {}".format(" ".join(cli_args)))
     
@@ -185,7 +190,6 @@ class PSTExtractor():
             # if the output is a line break, @line_parts is converted to a string and logged
             # and @line_parts is cleared.
             for std_out in process.stdout.read(1):
-                
                 if std_out != "\n":
                     std_out = std_out.encode(self.charset).decode(self.charset, 
                             errors="replace")
