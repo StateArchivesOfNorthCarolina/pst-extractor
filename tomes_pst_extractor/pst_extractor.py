@@ -4,9 +4,10 @@
 ./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
 
 Todo:
-    - Test setup.py	
-    - Add unit tests.
-    - Test with PSTs that have an "@" in the filename.
+    * Test setup.py	
+    * Add unit tests.
+    * Test with PSTs that have an "@" in the filename.
+    * Proofread docstrings; run autoflakes.
 """
 
 __NAME__ = "tomes_pst_extractor"
@@ -134,7 +135,7 @@ class PSTExtractor():
         @self.extractor_app with the appropriate logging level.
         
         Args:
-            line (str): The text outputted by @self.extractor_app.
+            - line (str): The text outputted by @self.extractor_app.
         
         Returns:
             None
