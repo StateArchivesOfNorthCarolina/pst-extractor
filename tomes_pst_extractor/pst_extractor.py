@@ -4,6 +4,7 @@
 ./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
 
 Todo:
+    * Re-test with the trail license key: the Python script isn't catching the .exe errors. 
     * Test setup.py	
     * Add unit tests.
     * Test with PSTs that have an "@" in the filename.
