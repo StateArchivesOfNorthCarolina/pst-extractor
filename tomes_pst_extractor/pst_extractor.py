@@ -13,7 +13,7 @@ Todo:
 
 __NAME__ = "tomes_pst_extractor"
 __FULLNAME__ = "TOMES PST Extractor"
-__DESRIPTION__ = "Part of the TOMES project: converts a PST file to MIME/EML."
+__DESCRIPTION__ = "Part of the TOMES project: converts a PST file to MIME/EML."
 __URL__ = "https://github.com/statearchivesofnorthcarolina/tomes-pst-extractor"
 __VERSION__ = "0.0.2"
 __AUTHOR__ = ["Jeremy Gibson", "Nitin Arora"]
