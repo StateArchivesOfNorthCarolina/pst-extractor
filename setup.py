@@ -1,6 +1,5 @@
 from setuptools import setup, setuptools
-from tomes_pst_converter.pst_converter import __NAME__, __DESCRIPTION__, __URL__, __VERSION__,
-__AUTHOR__, __AUTHOR_EMAIL__
+from tomes_pst_extractor.pst_extractor import __NAME__, __DESCRIPTION__, __URL__, __VERSION__, __AUTHOR__, __AUTHOR_EMAIL__
 
 def doc():
     with open("docs/documentation.md") as d:
