@@ -186,6 +186,7 @@ class PSTExtractor():
         # based on: https://stackoverflow.com/a/803396
         process = subprocess.Popen(cli_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 universal_newlines=True)
+        
         while process.poll() is None:
              
             # save output to @line_parts as long as the output is not a line break.
@@ -202,10 +203,10 @@ class PSTExtractor():
                     line_parts[:] = []
                     self._log_subprocess_line(line)
 
-            # raise an exception if @process returns a positive integer (i.e. fails).
-            if process.poll() is not None and process.returncode > 0:
-                msg = "Process failed with return code: {}".format(process.returncode)
-                raise ChildProcessError(msg)
+        # raise an exception if @process returns a positive integer (i.e. fails).
+        if process.returncode > 0:
+            msg = "Process failed with return code: {}".format(process.returncode)
+            raise ChildProcessError(msg)
 
         return
  
