@@ -182,8 +182,7 @@ class PSTExtractor():
         # prepare to capture each character outputted from @self.extractor_app.
         line_parts = []
 
-        # run @self.extractor_app.
-        # based on: https://stackoverflow.com/a/803396
+        # run @self.extractor_app; based on: https://stackoverflow.com/a/803396
         process = subprocess.Popen(cli_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                 universal_newlines=True)
         
