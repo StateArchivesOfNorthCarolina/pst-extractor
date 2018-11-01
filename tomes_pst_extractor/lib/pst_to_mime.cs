@@ -63,6 +63,8 @@ namespace TOMES_PST_Extractor {
                 MailBee.Global.LicenseKey = licenseKey;
             }
             catch (Exception error) {
+                Console.WriteLine("WARNING: Can't use MailBee license key ending in: " + (
+                    licenseKey.Substring(licenseKey.Length - 4)));
                 Console.WriteLine("CRITICAL: " + error.Message);
                 System.Environment.Exit(1);
             }

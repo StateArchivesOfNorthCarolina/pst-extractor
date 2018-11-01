@@ -204,7 +204,7 @@ class PSTExtractor():
 
         # raise an exception if @process returns a positive integer (i.e. fails).
         if process.returncode > 0:
-            msg = "Process failed with return code: {}".format(process.returncode)
+            msg = "Command failed with return code: {}".format(process.returncode)
             raise ChildProcessError(msg)
 
         return
