@@ -4,7 +4,6 @@
 ./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
 
 Todo:
-    * Re-test with the trial license key: the Python script isn't catching the .exe errors. 
     * Test setup.py	
     * Add unit tests.
     * Test with PSTs that have an "@" in the filename.
@@ -169,6 +168,9 @@ class PSTExtractor():
         
         Returns:
             None
+
+        Raises:
+            - ChildProcessError: If the subprocess returns a code greater than 0 (i.e. fails).
         """
         
         # create the command to run.
@@ -199,7 +201,12 @@ class PSTExtractor():
                     line = "".join(line_parts)
                     line_parts[:] = []
                     self._log_subprocess_line(line)
-        
+
+            # raise an exception if @process returns a positive integer (i.e. fails).
+            if process.poll() is not None and process.returncode > 0:
+                msg = "Process failed with return code: {}".format(process.returncode)
+                raise ChildProcessError(msg)
+
         return
  
 
