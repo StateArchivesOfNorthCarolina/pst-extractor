@@ -4,7 +4,8 @@ Author: Jeremy Gibson and Nitin Arora, State Archives of North Carolina.
 Version: 0.0.2
 
 This application uses MailBee .NET objects library (https://afterlogic.com/mailbee-net/email-components) 
-to extract EML files a source PST file.
+to extract EML files a source PST file. Developer documentation is located at: 
+https://afterlogic.com/mailbee-net/docs/#developer_guide.html
 
 Note: This code requires a MailBee license key (look for "string licenseKey =", below).
 
@@ -17,7 +18,8 @@ distribute a compiled executable per the MailBee documentation from September 20
 Features:
 
     - Skips processing of folders that start with the string "delete" (case insensitive).
-    - Names EML files with the ItemId from the PST's Messaging Application Programming Interface (MAPI).
+    - Names EML files with the ItemId from the PST's Messaging Application Programming Interface 
+    (MAPI).
     - Legalizes output folder/file path names.
 
 Logging notes:
@@ -28,6 +30,8 @@ Logging notes:
     level.
     - The only exception to this is "INFO: " in that omitting this string from "info"-level output
     will imply the output to be at the "info"-level.
+    - "CRITICAL"-level output should immediately be followed by an exit code of 1 (or another 
+    positive integer). This will inform the Python wrapper that it needs to raise an exception.
 */
 
 using System;
@@ -54,13 +58,18 @@ namespace TOMES_PST_Extractor {
             // !!! DO NOT DISTRIBUTE SOURCE CODE WITH THIS VALUE FILLED OUT. !!!
             string licenseKey = "License_Key_Goes_Here";
             
-            // set MailBee license key.
-            MailBee.Global.LicenseKey = licenseKey;
+            // set MailBee license key; exit if the key is invalid/expired.
+            try {
+                MailBee.Global.LicenseKey = licenseKey;
+            }
+            catch (Exception error) {
+                Console.WriteLine("CRITICAL: " + error.Message);
+                System.Environment.Exit(1);
+            }
             
             // get command line arguments.
             if (args.Length < 3) {
-                string err = "Missing required argument(s).";
-                Console.WriteLine("ERROR: " + err);
+                Console.WriteLine("CRITICAL: Missing required argument(s)");
                 System.Environment.Exit(1);
             }
             string accountName = args[0];
@@ -82,8 +91,8 @@ namespace TOMES_PST_Extractor {
                 System.Environment.Exit(0);
             }
             catch (Exception error) {
-                Console.WriteLine("ERROR: " + error.Message);
-                System.Environment.Exit(error.HResult);
+                Console.WriteLine("CRITICAL: " + error.Message);
+                System.Environment.Exit(1);
             }
         }
 
