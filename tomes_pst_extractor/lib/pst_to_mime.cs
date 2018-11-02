@@ -30,8 +30,10 @@ Logging notes:
     level.
     - The only exception to this is "INFO: " in that omitting this string from "info"-level output
     will imply the output to be at the "info"-level.
-    - "CRITICAL"-level output should immediately be followed by an exit code of 1 (or another 
-    positive integer). This will inform the Python wrapper that it needs to raise an exception.
+    - If "ERROR" or CRITICAL" level output precedes having to immediately exit the application due
+    to a serious problem, an exit code of 1 (or another positive integer) should be sent by
+    System.Environment.Exit(). This will inform the Python wrapper that it needs to raise an 
+    exception.
 */
 
 using System;
@@ -65,13 +67,13 @@ namespace TOMES_PST_Extractor {
             catch (Exception error) {
                 Console.WriteLine("WARNING: Can't use MailBee license key ending in: " + (
                     licenseKey.Substring(licenseKey.Length - 4)));
-                Console.WriteLine("CRITICAL: " + error.Message);
+                Console.WriteLine("ERROR: " + error.Message);
                 System.Environment.Exit(1);
             }
             
             // get command line arguments.
             if (args.Length < 3) {
-                Console.WriteLine("CRITICAL: Missing required argument(s)");
+                Console.WriteLine("ERROR: Missing required argument(s)");
                 System.Environment.Exit(1);
             }
             string accountName = args[0];
@@ -93,7 +95,7 @@ namespace TOMES_PST_Extractor {
                 System.Environment.Exit(0);
             }
             catch (Exception error) {
-                Console.WriteLine("CRITICAL: " + error.Message);
+                Console.WriteLine("ERROR: " + error.Message);
                 System.Environment.Exit(1);
             }
         }
