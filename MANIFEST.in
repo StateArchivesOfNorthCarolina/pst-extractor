@@ -1,0 +1,2 @@
+include tomes_pst_extractor/lib/*.dll
+include tomes_pst_extractor/lib/*.exe
