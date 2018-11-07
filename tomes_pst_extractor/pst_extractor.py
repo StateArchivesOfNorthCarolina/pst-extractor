@@ -4,7 +4,6 @@
 ./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
 
 Todo:
-    * Test setup.py	
     * Add unit tests.
     * Test with PSTs that have an "@" in the filename.
     * Proofread docstrings; run autoflakes.
