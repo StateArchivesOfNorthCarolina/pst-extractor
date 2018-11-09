@@ -16,11 +16,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 def EXTRACT_AND_COUNT(pst_file):
     """ Converts @pst_file to MIME inside a temporary directory. After the number of EML files
-    extracted is tallied the directory is deleted.
+    is tallied the directory is deleted.
     
     Returns:
         int: The return value.
-        The number of EML files extracted.
+        The number of EML files.
 
     Raises:
         - FileNotFoundError: If @pst_file isn't a file.
