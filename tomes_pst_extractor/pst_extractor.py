@@ -141,7 +141,7 @@ class PSTExtractor():
         """
 
         # determine logging level based on the line prefix ("ERROR: ", "WARNING: ", etc.).
-        level = line[:line.find(":")].strip().lower()
+        level = line[:line.find(":")].lower()
 
         # make sure @level is a valid logging level.
         if level not in self._valid_log_levels:
