@@ -86,4 +86,3 @@ def main(pst_file: ("the PST file from which to tally EML files")):
 
 if __name__ == "__main__":    
     plac.call(main)
-
