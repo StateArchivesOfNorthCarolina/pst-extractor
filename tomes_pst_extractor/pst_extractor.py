@@ -176,13 +176,20 @@ class PSTExtractor():
             cli_args.insert(0, "mono")
         self.logger.debug("Running command: {}".format(" ".join(cli_args)))
     
-        # prepare to capture each character outputted from @self.extractor_app.
-        line_parts = []
+        # if @self.use_mono is False (i.e. Windows), hide the console window per: https://stackoverflow.com/a/1016651
+        # See also: https://docs.python.org/3/library/subprocess.html#windows-popen-helpers
+        startup_info = None
+        if not self.use_mono:
+            startup_info = subprocess.STARTUPINFO()
+            startup_info.dwFlags |= subprocess.STARTF_USESHOWWINDOW
 
         # run @self.extractor_app; based on: https://stackoverflow.com/a/803396
         process = subprocess.Popen(cli_args, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                universal_newlines=True)
+                startupinfo=startup_info, universal_newlines=True)
         
+        # prepare to capture each character outputted from @self.extractor_app.
+        line_parts = []
+
         while process.poll() is None:
              
             # save output to @line_parts as long as the output is not a line break.
