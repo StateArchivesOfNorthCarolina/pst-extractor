@@ -77,7 +77,7 @@ class PSTExtractor():
         self.extractor_path = self._join_paths(os.path.dirname(__file__), "lib", 
                 self.extractor_app)
         if not os.path.isfile(self.extractor_path):
-            msg = "Can't find .exe file: {}".format(self.extractor_app)
+            msg = "Can't find .exe file: {}".format(self.extractor_path)
             raise FileNotFoundError(msg)
         
         # determine whether or not to run @self.extractor_app with Mono.
