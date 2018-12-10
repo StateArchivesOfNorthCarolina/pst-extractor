@@ -1,13 +1,7 @@
 #!/usr/bin/env python3
 
 """ This module contains a class for converting a PST file to MIME/EML. It is a wrapper around
-./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs.
-
-Todo:
-    * Add unit tests.
-    * Test with PSTs that have an "@" in the filename.
-    * Proofread docstrings; run autoflakes.
-"""
+./lib/pst_to_mime.exe, itself compiled from ./lib/pst_to_mime.cs. """
 
 __NAME__ = "tomes_pst_extractor"
 __FULLNAME__ = "TOMES PST Extractor"
@@ -176,7 +170,8 @@ class PSTExtractor():
             cli_args.insert(0, "mono")
         self.logger.debug("Running command: {}".format(" ".join(cli_args)))
     
-        # if @self.use_mono is False (i.e. Windows), hide the console window per: https://stackoverflow.com/a/1016651
+        # if @self.use_mono is False (i.e. Windows), hide the console window per:
+        # https://stackoverflow.com/a/1016651
         # See also: https://docs.python.org/3/library/subprocess.html#windows-popen-helpers
         startup_info = None
         if not self.use_mono:
