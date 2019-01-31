@@ -66,7 +66,7 @@ The sample files can be used with the command line options of some of the unit t
 TOMES PST Extractor consists of single-purpose high, level module, `pst_extractor.py`. It can be used as native Python class or as command line script.
 
 ## Using pst_extractor.py with Python
-To get started, import the module and run help():
+To get started, import the module and run `help()`:
 
 	>>> from tomes_pst_extractor import pst_extractor
 	>>> help(pst_extractor)
