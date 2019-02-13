@@ -53,7 +53,7 @@ def EXTRACT_AND_COUNT(pst_file):
     return eml_count
 
 
-class Test_PSTConnverter(unittest.TestCase):
+class Test_PSTExtractor(unittest.TestCase):
 
 
     def setUp(self):
